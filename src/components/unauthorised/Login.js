@@ -21,17 +21,7 @@ export default class Login extends Component {
     handleLogin = e => {
         e.preventDefault()
 
-        const configObject = {
-            method: "POST",
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(this.state)
-        }
-        fetch(`${API}login`, configObject)
-        .then(res => res.json())
-        .then(data => this.props.signIn(data))
+        API.login(this.state).then(data => this.props.signIn(data))
     }
 
     render() {

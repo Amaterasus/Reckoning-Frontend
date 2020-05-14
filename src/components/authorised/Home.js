@@ -6,6 +6,7 @@ export default class Home extends Component {
         return (
             <Fragment>
                 <div>signed in correctly</div>
+                <button onClick={this.props.signOut}>sign out</button>
             </Fragment>)
     }
 }

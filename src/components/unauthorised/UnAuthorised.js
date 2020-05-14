@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { Route, Switch} from "react-router-dom";
+import { Route, Switch, Redirect} from "react-router-dom";
 
 import Login from "./Login"
 import Singup from "./Signup"
@@ -18,9 +18,10 @@ export default class UnAuthorised extends Component {
                     <Route exact path="/signup">
                         <Singup />
                     </Route>
-                    <Route path="/">
+                    <Route exact path="/">
                         <Welcome />
                     </Route>
+                    <Redirect to="/" />
                 </Switch>
             </Fragment>)
     }
