@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import LoginForm from "../../Presentational/LoginForm"
 
+import API from "../../API"
+
 export default class Login extends Component {
 
     state = {
@@ -27,12 +29,9 @@ export default class Login extends Component {
             },
             body: JSON.stringify(this.state)
         }
-        fetch("http://localhost:3000/signin", configObject)
+        fetch(`${API}login`, configObject)
         .then(res => res.json())
-        .then(data => console.log(data))
-        // fetch("http://localhost:3000/users")
-        // .then(res => res.json())
-        // .then(data => console.log(data))
+        .then(data => this.props.signIn(data))
     }
 
     render() {
