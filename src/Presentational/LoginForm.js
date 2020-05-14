@@ -1,15 +1,32 @@
 import React from 'react';
+import { Form, Grid, Button} from "semantic-ui-react"
 
 function LoginForm(props) {
-    return <form onSubmit={props.handleSubmit}>
-        <label>Username:</label>
-        <input value={props.username} type="text" name="username" onChange={props.handleChange}></input>
-        <br />
-        <label>Password:</label>
-        <input value={props.password} type="password" name="password" onChange={props.handleChange}></input>
-        <br />
-        <button>Submit</button>
-    </form>
+    return (
+        <Grid centered>
+            <Grid.Row /><Grid.Row /><Grid.Row /><Grid.Row /><Grid.Row /><Grid.Row /><Grid.Row /><Grid.Row />
+            <Form onSubmit={props.handleSubmit}>
+                <Form.Input     
+                    required
+                    onChange = {props.handleChange}
+                    value={props.username}
+                    label="Username:"       
+                    placeholder="Username"
+                    name="username"
+                />
+                <Form.Input   
+                    required
+                    onChange = {props.handleChange}
+                    value={props.password}
+                    label="Password:"           
+                    placeholder="Password"
+                    name="password"
+                    type="password"
+                />
+                <Button>Login</Button>
+            </Form>
+        </Grid>
+    )
 }
 
 export default LoginForm;

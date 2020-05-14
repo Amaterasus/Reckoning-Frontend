@@ -41,7 +41,7 @@ class App extends Component {
         username,
         bio
       }
-    }, () =>  this.props.history.push(`/`))
+    })
 
   }
 

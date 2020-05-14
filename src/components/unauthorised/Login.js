@@ -7,8 +7,7 @@ import API from "../../API"
 export default class Login extends Component {
 
     state = {
-        username: "",
-        password: ""
+        
     }
 
     handleChange = ({target: {name, value}}) => {

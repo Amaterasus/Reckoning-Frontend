@@ -1,8 +1,21 @@
 import React, { Component } from 'react';
 
-export default class Login extends Component {
+import SignUpForm from "../../Presentational/SignUpForm"
+
+export default class SignUp  extends Component {
+
+    state = {
+
+    }
+
+    handleChange = ({target: {name, value}}) => {
+        this.setState({
+            [name]: value
+        })
+
+    }
 
     render() {
-        return <div></div>
+        return <SignUpForm handleChange={this.handleChange} />
     }
 }
