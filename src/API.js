@@ -1,6 +1,7 @@
 const BASE_URL = "http://localhost:3000/"
 const LOGIN_URL = `${BASE_URL}login`
 const VALIDATE_URL = `${BASE_URL}validate`
+const REGISTER_URL = `${BASE_URL}register`
 
 
 const get = (url, token) => {
@@ -30,5 +31,7 @@ const post = (url, body) => {
 
 const login = body => post(LOGIN_URL, body).then(res => res.json())
 
+const register = body => post(REGISTER_URL, body).then(res => res.json())
 
-export default { login, validate}
+
+export default { login, validate, register}
