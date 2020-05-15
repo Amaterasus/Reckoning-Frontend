@@ -19,7 +19,7 @@ export default class UnAuthorised extends Component {
                         <Login signIn={this.props.signIn} />
                     </Route>
                     <Route exact path="/signup">
-                        <SingUp />
+                        <SingUp signIn={this.props.signIn} />
                     </Route>
                     <Route exact path="/">
                         <Welcome />

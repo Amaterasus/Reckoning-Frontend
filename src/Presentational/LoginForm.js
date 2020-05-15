@@ -5,26 +5,32 @@ function LoginForm(props) {
     return (
         <Grid centered>
             <Grid.Row /><Grid.Row /><Grid.Row /><Grid.Row /><Grid.Row /><Grid.Row /><Grid.Row /><Grid.Row />
-            <Form onSubmit={props.handleSubmit}>
-                <Form.Input     
-                    required
-                    onChange = {props.handleChange}
-                    value={props.username}
-                    label="Username:"       
-                    placeholder="Username"
-                    name="username"
-                />
-                <Form.Input   
-                    required
-                    onChange = {props.handleChange}
-                    value={props.password}
-                    label="Password:"           
-                    placeholder="Password"
-                    name="password"
-                    type="password"
-                />
-                <Button>Login</Button>
-            </Form>
+            <Grid.Row columns={3}>
+                <Grid.Column />
+                <Grid.Column>
+                <Form onSubmit={props.handleSubmit}>
+                    <Form.Input     
+                        required
+                        onChange={props.handleChange}
+                        value={props.username}
+                        label="Username:"       
+                        placeholder="Username"
+                        name="username"
+                    />
+                    <Form.Input   
+                        required
+                        onChange={props.handleChange}
+                        value={props.password}
+                        label="Password:"           
+                        placeholder="Password"
+                        name="password"
+                        type="password"
+                    />
+                    <Button>Login</Button>
+                </Form>
+                </Grid.Column>
+                <Grid.Column />
+            </Grid.Row>
         </Grid>
     )
 }

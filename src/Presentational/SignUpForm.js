@@ -5,7 +5,7 @@ export default class SignUpForm  extends Component {
 
     render() {
         return (
-            <Grid centered>
+            <Grid>
                 <Grid.Row /><Grid.Row /><Grid.Row />
                 <Grid.Row columns={3}>
                     <Grid.Column></Grid.Column>
@@ -58,7 +58,7 @@ export default class SignUpForm  extends Component {
                                 name="steamID64"
                                 type="number"
                             />
-                            <Button danger>Sign up</Button>
+                            <Button secondary>Sign up</Button>
                         </Form>
                     </Grid.Column>
                     <Grid.Column></Grid.Column>

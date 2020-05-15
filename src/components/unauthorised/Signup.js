@@ -13,6 +13,7 @@ export default class SignUp  extends Component {
     handleSubmit = () => {
         if (this.state.steamID64.length === 17) {
             API.register(this.state)
+            .then(data => this.props.signIn(data))
         }
 
     }
