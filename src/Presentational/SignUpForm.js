@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Input, Grid, Button} from "semantic-ui-react"
+import { Form, Grid, Button} from "semantic-ui-react"
 
 export default class SignUpForm  extends Component {
 
@@ -14,14 +14,15 @@ export default class SignUpForm  extends Component {
                             <Form.Input
                                 required
                                 onChange={this.props.handleChange}
+                                value={this.props.details.username}
                                 label="Username:"       
                                 placeholder="Username"
                                 name="username"
                             />
-                            <Form.Field     
+                            <Form.Input     
                                 required
-                                control={Input}
                                 onChange={this.props.handleChange}
+                                value={this.props.details.email}
                                 label="Email:"       
                                 placeholder="Please enter a valid email address'"
                                 name="email"
@@ -29,7 +30,8 @@ export default class SignUpForm  extends Component {
                             <Form.Input     
                                 required
                                 onChange={this.props.handleChange}
-                                label="Dob:"       
+                                value={this.props.details.dob}
+                                label="Date of Birth:"       
                                 placeholder="Dob"
                                 name="dob"
                                 type="date"
@@ -37,6 +39,7 @@ export default class SignUpForm  extends Component {
                             <Form.Input   
                                 required
                                 onChange={this.props.handleChange}
+                                value={this.props.details.password}
                                 label="Password:"           
                                 placeholder="Password"
                                 name="password"
@@ -45,6 +48,7 @@ export default class SignUpForm  extends Component {
                             <Form.Input   
                                 required
                                 onChange={this.props.handleChange}
+                                value={this.props.details.password_confirmation}
                                 label="Password Confirmation:"           
                                 placeholder="Password Confirmation"
                                 name="password_confirmation"
@@ -53,6 +57,7 @@ export default class SignUpForm  extends Component {
                             <Form.Input     
                                 required
                                 onChange={this.props.handleChange}
+                                value={this.props.details.steamID64}
                                 label="SteamID64:"       
                                 placeholder="SteamID64"
                                 name="steamID64"

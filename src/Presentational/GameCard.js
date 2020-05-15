@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
 import { Card, Image} from "semantic-ui-react"
 
 
@@ -22,7 +22,7 @@ export default class GameCard extends Component {
             <Card className="shared">
                 <Image  src={`https://steamcdn-a.akamaihd.net/steam/apps/${this.props.details.appid}/header.jpg`} />
 
-                <Card.Header verticalAlign='middle'>{this.props.details.name}</Card.Header>
+                <Card.Header>{this.props.details.name}</Card.Header>
             </Card>
         )
     }

@@ -34,6 +34,7 @@ class App extends Component {
   }
 
   signIn = ({id, username, bio, token}) => {
+    console.log(token)
     localStorage.token = token
     this.setState({
       user: {

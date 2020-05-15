@@ -1,9 +1,11 @@
 import React, { Component, Fragment} from 'react';
-import { Card } from "semantic-ui-react"
+import { Card, Container } from "semantic-ui-react"
 
 import API from "../../API"
 
 import GameCard from "../../Presentational/GameCard"
+import UserDetails from "../../Presentational/UserDetails"
+import ProfileGames from "./ProfileGames"
 
 const proxy = "https://cors-anywhere.herokuapp.com/"
 const KEY = ""
@@ -12,8 +14,7 @@ const player_url = `http://api.steampowered.com/IPlayerService/GetOwnedGames/v00
 export default class Profile extends Component {
 
     state = {
-        viewedProfile: null,
-        games: []
+        viewedProfile: null
     }
 
     // componentDidMount() {
@@ -24,8 +25,12 @@ export default class Profile extends Component {
     // }
 
     componentDidMount() {
-        this.fetchUserAndGamesData()
-        .then(userAndGames => this.setState(userAndGames))
+
+
+        API.getUserData(this.props.match.params.id, localStorage.token)
+        .then(data => this.setState({viewedProfile: data}))
+        // this.fetchUserAndGamesData()
+        // .then(userAndGames => this.setState(userAndGames))
     }
 
     fetchUserAndGamesData = () => {        
@@ -49,7 +54,6 @@ export default class Profile extends Component {
 
     fetchGames() {
         console.log("fetching games")
-        console.log(this.state.viewedProfile.steamID64)
         fetch(`${proxy}${player_url}${this.state.viewedProfile.steamID64}`)
         .then(res => res.json())
         .then(data => this.setState({games: data.response.games}))
@@ -61,9 +65,14 @@ export default class Profile extends Component {
 
     render() {
         return (
+            this.state.viewedProfile ? 
             <Fragment>
-                {/* {this.state.viewedProfile.steamID64 !== undefined ? this.fetchGames() : null} */}
-                {this.renderGames() }
-            </Fragment>)
+                <Container>
+                    <UserDetails details={this.state.viewedProfile} />
+                    <ProfileGames viewedProfile={this.state.viewedProfile}/>
+                </Container>
+            </Fragment> : <div>loading</div>
+            
+            )
     }
 }
