@@ -5,10 +5,6 @@ import { Container, Card } from "semantic-ui-react"
 
 import GameCard from "../../Presentational/GameCard"
 
-const proxy = "https://cors-anywhere.herokuapp.com/"
-const KEY = ""
-const player_url = `http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${KEY}&include_appinfo=true&steamid=`
-
 export default class ProfileGames extends Component {
 
     state = {
@@ -20,7 +16,7 @@ export default class ProfileGames extends Component {
         let shared_games = []
         let other_games = []
 
-        this.state.games.forEach(game => {
+        this.props.theirGames.forEach(game => {
             if (JSON.stringify(this.props.compareMyGames).includes(JSON.stringify(game))) {
                 shared_games = [...shared_games, game]
             } else {
@@ -39,28 +35,17 @@ export default class ProfileGames extends Component {
                 <Card.Group itemsPerRow={4}>{other_games.map(game => <GameCard key={game.appid} details={game} shared="unshared" />)}</Card.Group>  
             </Fragment>
         )
-        
-
+    
     }
 
     renderMyGames() {
         return <Card.Group itemsPerRow={4}>{this.props.myGames.map(game => <GameCard key={game.appid} details={game} />)}</Card.Group>
     }
 
-    componentDidMount() {
-        if (this.props.viewedProfile) {
-            fetch(`${proxy}${player_url}${this.props.viewedProfile.steamID64}`)
-            .then(res => res.json())
-            .then(data => this.setState({games: data.response.games}))
-            console.log("fetching games!")
-            console.log(this.props.viewedProfile.steamID64)
-        }
-    }
-
     render(){
         return (
                 this.props.myGames ? this.renderMyGames() :
-                this.state.games ? this.renderOtherGames() : null
+                this.props.theirGames ? this.renderOtherGames() : null
         )
     }
 }

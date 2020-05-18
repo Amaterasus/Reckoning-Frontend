@@ -6,20 +6,6 @@ import SignUpForm from "../../Presentational/SignUpForm"
 import IsThisYou from "../../Presentational/IsThisYou"
 
 
-const proxy = "https://cors-anywhere.herokuapp.com/"
-const KEY = ""
-const player_url = `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${KEY}&steamids=`
-
-// async function fetchAvatarUrl(steamID64) {
-//     let url = ""
-//     fetch(`${proxy}${player_url}${steamID64}`)
-//     .then(res => res.json())
-//     .then(data => url = data.response.players[0].avatarfull)
-    
-    
-//     return url
-// }
-
 export default class SignUp  extends Component {
 
     state = {
@@ -33,24 +19,16 @@ export default class SignUp  extends Component {
         },
         formSubmitted: false
     }
-    
-    handleSubmit = () => {
-        if (this.state.user.steamID64.length === 17) {
 
-            fetch(`${proxy}${player_url}${this.state.user.steamID64}`)
-            .then(res => res.json())
-            .then(data => this.setState({
+    handleSubmit = () => {
+        API.getAvatar({steamID64: this.state.user.steamID64})
+        .then(data => this.setState({
                 user: {
                     ...this.state.user,
-                    steam_avatar_url: data.response.players[0].avatarfull
+                    steam_avatar_url: data.steam_avatar_url
                 },
                 formSubmitted: true
-            }))
-
-            // API.register(this.state)
-            // .then(data => this.props.signIn(data))
-        }
-
+        }))
     }
 
     registerUser = () => {

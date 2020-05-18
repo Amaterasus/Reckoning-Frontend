@@ -3,6 +3,7 @@ const LOGIN_URL = `${BASE_URL}login`
 const VALIDATE_URL = `${BASE_URL}validate`
 const REGISTER_URL = `${BASE_URL}register`
 const GET_USER_URL = `${BASE_URL}users/`
+const AVATAR_URL = `${BASE_URL}avatar/`
 
 
 const get = (url, token) => {
@@ -32,6 +33,8 @@ const post = (url, body) => {
     return fetch(url, configObject)
 }
 
+const getAvatar = body => post(AVATAR_URL, body).then(res => res.json())
+
 const login = body => post(LOGIN_URL, body).then(res => res.json())
 
 const register = body => post(REGISTER_URL, body).then(res => res.json())
@@ -46,4 +49,4 @@ const authorisedFetch = (url, { body, headers, method }) => {
         body: JSON.stringify(body)
     })
 }
-export default { authorisedFetch, getUserData, login, validate, register}
+export default { authorisedFetch, getAvatar, getUserData, login, validate, register}

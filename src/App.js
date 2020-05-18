@@ -11,26 +11,10 @@ import API from "./API"
 import {  withRouter } from 'react-router-dom';
 
 
-
-const proxy = "https://cors-anywhere.herokuapp.com/"
-const KEY = ""
-const player_url = `http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${KEY}&include_appinfo=true&steamid=`
-
 class App extends Component {
 
   state = {
     user: {}
-  }
-
-  fetchUserGames() {
-    return fetch(`${proxy}${player_url}${this.state.user.steamID64}`)
-    .then(res => res.json())
-    .then(data => this.setState({
-      user: {
-        ...this.state.user,
-        games: data.response.games
-      }
-    }))
   }
 
   componentDidMount() {
@@ -38,42 +22,31 @@ class App extends Component {
       API.validate(localStorage.token)
       .then(async data => {
         localStorage.token = data.token
-        console.log(data)
         await this.setState({
           user: {
             id: data.id,
             username: data.id,
             bio: data.bio,
-            steamID64: data.steamID64
+            steamID64: data.steamID64,
+            games: data.games
           }
         })
-
-        this.fetchUserGames()
       })
     }
-
   }
 
-  // componentDidUpdate() {
-  //   console.log(this.state.user.games)
-  // }
-
-
-  signIn = async ({id, username, bio, steamID64, token}) => {
-    console.log("Signing in!")
-    console.log(steamID64)
-    console.log(token)
+  signIn = ({id, username, bio, steamID64, games, token}) => {
     localStorage.token = token
-    await this.setState({
+
+    this.setState({
       user: {
         id,
         username,
         bio,
-        steamID64
+        steamID64,
+        games
       }
     })
-
-    this.fetchUserGames()
 
   }
 
@@ -91,6 +64,5 @@ class App extends Component {
     </Fragment>)}
 
 }
-
 
 export default withRouter(App)
