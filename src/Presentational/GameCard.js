@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-// import { Link } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
 import { Card, Image} from "semantic-ui-react"
 
 
@@ -19,8 +19,10 @@ export default class GameCard extends Component {
 
     render(){
         return (
-            <Card className="shared">
-                <Image  src={`https://steamcdn-a.akamaihd.net/steam/apps/${this.props.details.appid}/header.jpg`} />
+            <Card className={this.props.shared} >
+                <a href={`http://store.steampowered.com/app/${this.props.details.appid}`} target="_blank">
+                    <Image src={`https://steamcdn-a.akamaihd.net/steam/apps/${this.props.details.appid}/header.jpg`} />
+                </a>
 
                 <Card.Header>{this.props.details.name}</Card.Header>
             </Card>

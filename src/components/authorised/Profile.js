@@ -14,7 +14,7 @@ const player_url = `http://api.steampowered.com/IPlayerService/GetOwnedGames/v00
 export default class Profile extends Component {
 
     state = {
-        viewedProfile: null
+        viewedProfile: {}
     }
 
     // componentDidMount() {
@@ -25,10 +25,8 @@ export default class Profile extends Component {
     // }
 
     componentDidMount() {
-
-
         API.getUserData(this.props.match.params.id, localStorage.token)
-        .then(data => this.setState({viewedProfile: data}))
+        .then(data => this.setState({viewedProfile: data.user, games: data.games}))
         // this.fetchUserAndGamesData()
         // .then(userAndGames => this.setState(userAndGames))
     }
@@ -46,17 +44,17 @@ export default class Profile extends Component {
     }
     // && !this.state.games
     // data.response.games
-    componentDidUpdate() {
-        if (this.state.viewedProfile.steamID64 !== undefined && !this.state.games){
+    // componentDidUpdate() {
+    //     if (this.state.viewedProfile.steamID64 !== undefined && !this.state.games){
 
-        }
-    }
+    //     }
+    // }
 
     fetchGames() {
         console.log("fetching games")
-        fetch(`${proxy}${player_url}${this.state.viewedProfile.steamID64}`)
-        .then(res => res.json())
-        .then(data => this.setState({games: data.response.games}))
+        // fetch(`${proxy}${player_url}${this.state.viewedProfile.steamID64}`)
+        // .then(res => res.json())
+        // .then(data => this.setState({games: data.response.games}))
     }
 
     renderGames() {
@@ -65,11 +63,18 @@ export default class Profile extends Component {
 
     render() {
         return (
-            this.state.viewedProfile ? 
+            this.state.viewedProfile.id === this.props.user.id && this.props.user.games ? 
             <Fragment>
                 <Container>
-                    <UserDetails details={this.state.viewedProfile} />
-                    <ProfileGames viewedProfile={this.state.viewedProfile}/>
+                    <UserDetails details={this.state.viewedProfile} mine={true} />
+                    <ProfileGames myGames={this.props.user.games} />
+                </Container>
+            </Fragment> : 
+            this.state.viewedProfile.id ?
+            <Fragment>
+                <Container>
+                    <UserDetails details={this.state.viewedProfile} mine={false} />
+                    <ProfileGames viewedProfile={this.state.viewedProfile} compareMyGames={this.props.user.games} />
                 </Container>
             </Fragment> : <div>loading</div>
             

@@ -13,12 +13,12 @@ export default class UserDetails extends Component {
                     <Item.Content>
                     <Item.Header>{this.props.details.username}</Item.Header>
                     <Item.Description>{this.props.details.bio ? this.props.details.bio : "Trust me I'm interesting"}</Item.Description>
-                    <Item.Extra>
+                    {this.props.mine ? <Item.Extra>
                         <Button primary floated='right'>
-                        Add Friend!
+                        Edit Profile!
                         <Icon name='right chevron' />
                         </Button>
-                    </Item.Extra>
+                    </Item.Extra> : null}
                     </Item.Content>
                 </Item>
             </Item.Group>
