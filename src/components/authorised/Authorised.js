@@ -11,9 +11,9 @@ class Authorised extends Component {
     render() {
         return (
             <Fragment>
-                <button onClick={this.props.signOut}>sign out</button>
                 <Button as={Link} to={`/profile/${this.props.user.id}`}>Home</Button>
                 <Button as={Link} to="/search">Search</Button>
+                <button onClick={this.props.signOut}>sign out</button>
                 <Switch>
                     <Route exact path="/">
                             <Home />
