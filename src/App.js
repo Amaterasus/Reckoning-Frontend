@@ -28,14 +28,15 @@ class App extends Component {
             username: data.id,
             bio: data.bio,
             steamID64: data.steamID64,
-            games: data.games
+            games: data.games,
+            steam_avatar_url: data.avatar_url
           }
         })
       })
     }
   }
 
-  signIn = ({id, username, bio, steamID64, games, token}) => {
+  signIn = ({id, username, bio, steamID64, games, avatar_url, token}) => {
     localStorage.token = token
 
     this.setState({
@@ -44,7 +45,8 @@ class App extends Component {
         username,
         bio,
         steamID64,
-        games
+        games,
+        steam_avatar_url: avatar_url
       }
     })
 

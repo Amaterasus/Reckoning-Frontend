@@ -14,11 +14,16 @@ export default class Profile extends Component {
     }
 
     componentDidMount() {
-        if (this.props.match.params.id !== this.props.user.id) {
+        if (parseInt(this.props.match.params.id) !== this.props.user.id) {
             API.getUserData(this.props.match.params.id, localStorage.token)
-            .then(data => this.setState({viewedProfile: data.user, games: data.games}))
+            .then(data => {
+                console.log(data.message)
+                return this.setState({viewedProfile: data.user, games: data.games})
+            })
+            console.log("fetching user data")
         } else {
             this.setState({viewedProfile: this.props.user})
+            console.log("not fetching user data")
         }
     }
 

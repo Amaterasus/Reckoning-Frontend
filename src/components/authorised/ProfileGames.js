@@ -17,13 +17,11 @@ export default class ProfileGames extends Component {
         let other_games = []
 
         this.props.theirGames.forEach(game => {
-            if (JSON.stringify(this.props.compareMyGames).includes(JSON.stringify(game))) {
+            if (JSON.stringify(this.props.compareMyGames).includes(`"appid":${game.appid}`)) {
                 shared_games = [...shared_games, game]
             } else {
                 other_games = [...other_games, game]
             }
-            console.log(shared_games)
-            console.log(other_games)
         })
 
         console.log("begining to render games")
