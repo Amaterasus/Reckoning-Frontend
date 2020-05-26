@@ -4,7 +4,7 @@ import { Form, Grid, Button} from "semantic-ui-react"
 function LoginForm(props) {
     return (
         <Grid centered>
-            <Grid.Row /><Grid.Row /><Grid.Row /><Grid.Row /><Grid.Row /><Grid.Row /><Grid.Row /><Grid.Row />
+            <Grid.Row /><Grid.Row /><Grid.Row /><Grid.Row /><Grid.Row /><Grid.Row /><Grid.Row />
             <Grid.Row columns={3}>
                 <Grid.Column />
                 <Grid.Column>

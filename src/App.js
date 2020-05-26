@@ -25,7 +25,7 @@ class App extends Component {
         await this.setState({
           user: {
             id: data.id,
-            username: data.id,
+            username: data.username,
             bio: data.bio,
             steamID64: data.steamID64,
             games: data.games,
@@ -52,6 +52,16 @@ class App extends Component {
 
   }
 
+  updateDetails = ({bio}) => {
+
+    this.setState({
+      user: {
+        ...this.state.user,
+        bio: bio
+      }
+    })
+  }
+
   signOut = () => {
     this.setState({
       user: {}
@@ -62,7 +72,7 @@ class App extends Component {
   render() {
     return (
     <Fragment>
-      {this.state.user.id ? <Authorised user={this.state.user} signOut={this.signOut} /> : <UnAuthorised username={this.state.username} signIn={this.signIn} />}    
+      {this.state.user.id ? <Authorised updateDetails={this.updateDetails} user={this.state.user} signOut={this.signOut} /> : <UnAuthorised username={this.state.username} signIn={this.signIn} />}    
     </Fragment>)}
 
 }

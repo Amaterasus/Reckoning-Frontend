@@ -5,18 +5,21 @@ import { Button } from "semantic-ui-react"
 import Home from "./Home"
 import Profile from "./Profile"
 import Search from "./Search"
+import EditProfile from "./EditProfile"
+import LoggedInNavBar from '../../Presentational/LoggedInNavBar';
 
 class Authorised extends Component {
 
     render() {
         return (
             <Fragment>
-                <Button as={Link} to={`/profile/${this.props.user.id}`}>Home</Button>
-                <Button as={Link} to="/search">Search</Button>
-                <Button onClick={this.props.signOut}>Sign out</Button>
+                <LoggedInNavBar signOut={this.props.signOut} id={this.props.user.id} />
                 <Switch>
                     <Route exact path="/">
-                            <Home />
+                        <Home user={this.props.user} />
+                    </Route>
+                    <Route exact path="/profile/edit">
+                        <EditProfile updateDetails={this.props.updateDetails} user={this.props.user} />
                     </Route>
                     <Route exact path="/profile/:id" render={(matchProps) => <Profile key={matchProps.match.params.id} {...matchProps} user={this.props.user} />} />
                     <Route exact path="/search">

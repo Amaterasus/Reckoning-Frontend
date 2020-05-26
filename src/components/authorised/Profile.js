@@ -1,9 +1,8 @@
 import React, { Component, Fragment} from 'react';
-import { Card, Container } from "semantic-ui-react"
+import { Container } from "semantic-ui-react"
 
 import API from "../../API"
 
-import GameCard from "../../Presentational/GameCard"
 import UserDetails from "../../Presentational/UserDetails"
 import ProfileGames from "./ProfileGames"
 

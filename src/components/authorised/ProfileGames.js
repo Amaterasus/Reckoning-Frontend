@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-import { Container, Card } from "semantic-ui-react"
+import { Container, Card} from "semantic-ui-react"
 
 
 import GameCard from "../../Presentational/GameCard"
