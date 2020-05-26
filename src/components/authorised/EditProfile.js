@@ -1,5 +1,4 @@
 import React, { Component, Fragment} from 'react';
-import { Button } from "semantic-ui-react"
 import EditProfileForm from '../../Presentational/EditProfileForm';
 import API from '../../API';
 import { Redirect } from 'react-router-dom';
