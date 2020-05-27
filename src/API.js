@@ -7,6 +7,7 @@ const AVATAR_URL = `${BASE_URL}avatar/`
 const SEARCH_URL = `${BASE_URL}search/`
 const UPDATE_PASSWORD_URL = `${BASE_URL}updatepassword/`
 const UPDATE_DETAILS_URL = `${BASE_URL}updatedetails/`
+const GROUP_FINDER_URL = `${BASE_URL}groupfinder/`
 
 
 const get = (url, token) => {
@@ -49,6 +50,8 @@ const updatePassword = body => post(UPDATE_PASSWORD_URL, body).then(res => res.j
 
 const updateDetails = body => post(UPDATE_DETAILS_URL, body).then(res => res.json())
 
+const findCommonGames = body => post(GROUP_FINDER_URL, body).then(res => res.json())
+
 const authorisedFetch = (url, { body, headers, method }) => {
     return fetch(url, {
         method,
@@ -59,4 +62,4 @@ const authorisedFetch = (url, { body, headers, method }) => {
         body: JSON.stringify(body)
     })
 }
-export default { updateDetails, updatePassword, getUserData, authorisedFetch, search, getAvatar, getUserData, login, validate, register}
+export default { findCommonGames, updateDetails, updatePassword, authorisedFetch, search, getAvatar, getUserData, login, validate, register}

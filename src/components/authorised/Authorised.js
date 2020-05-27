@@ -3,6 +3,7 @@ import { Route, Switch, Redirect, withRouter, Link } from "react-router-dom";
 import { Button } from "semantic-ui-react"
 
 import Home from "./Home"
+import GroupFinder from "./GroupFinder"
 import Profile from "./Profile"
 import Search from "./Search"
 import EditProfile from "./EditProfile"
@@ -20,6 +21,9 @@ class Authorised extends Component {
                     </Route>
                     <Route exact path="/profile/edit">
                         <EditProfile updateDetails={this.props.updateDetails} user={this.props.user} />
+                    </Route>
+                    <Route exact path="/groupfinder">
+                        <GroupFinder />
                     </Route>
                     <Route exact path="/profile/:id" render={(matchProps) => <Profile key={matchProps.match.params.id} {...matchProps} user={this.props.user} />} />
                     <Route exact path="/search">

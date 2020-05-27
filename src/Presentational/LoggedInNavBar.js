@@ -14,6 +14,9 @@ export default class LoggedInNavBar extends Component {
                     <Menu.Item as={Link} to="/search">
                         Search
                     </Menu.Item>
+                    <Menu.Item as={Link} to="/groupfinder">
+                        Group Finder
+                    </Menu.Item>
                     <Menu.Menu position='right'>
                         <Menu.Item onClick={this.props.signOut} >
                             Sign Out
