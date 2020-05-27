@@ -8,11 +8,11 @@ export default class SharedGameCard extends Component {
     render(){
         return (
             <Card raised={true} >
-                <a href={`http://store.steampowered.com/app/${this.props.details[0].appid}`} target="_blank">
-                    <Image src={`https://steamcdn-a.akamaihd.net/steam/apps/${this.props.details[0].appid}/header.jpg`} />
+                <a href={`http://store.steampowered.com/app/${this.props.appid}`} target="_blank">
+                    <Image src={`https://steamcdn-a.akamaihd.net/steam/apps/${this.props.appid}/header.jpg`} />
                 </a>
 
-                <Card.Header>{this.props.details[1]} of you own this game</Card.Header>
+                <Card.Header>{this.props.players.map(player => <div>{player}</div>)}</Card.Header>
             </Card>
         )
     }
