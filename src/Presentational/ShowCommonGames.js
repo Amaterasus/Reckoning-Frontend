@@ -1,6 +1,6 @@
-import React, { Component, Fragment} from 'react';
+import React, { Component} from 'react';
 import { Redirect } from 'react-router-dom';
-import { Card } from "semantic-ui-react"
+import { Card, Container } from "semantic-ui-react"
 import SharedGameCard from "./SharedGameCard"
 
 export default class ShowCommonGames extends Component {
@@ -12,11 +12,11 @@ export default class ShowCommonGames extends Component {
 
     render() {
         return (
-            <Fragment>
+            <Container>
                 <Card.Group itemsPerRow={4} >
                     {this.renderGames()}
                     
                 </Card.Group>
-            </Fragment>)
+            </Container>)
     }
 }
