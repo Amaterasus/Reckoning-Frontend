@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000/"
+const BASE_URL = "https://reckoning-backend.herokuapp.com/"
 const LOGIN_URL = `${BASE_URL}login`
 const VALIDATE_URL = `${BASE_URL}validate`
 const REGISTER_URL = `${BASE_URL}register`
