@@ -12,7 +12,7 @@ export default class SharedGameCard extends Component {
                     <Image src={`https://steamcdn-a.akamaihd.net/steam/apps/${this.props.appid}/header.jpg`} />
                 </a>
 
-                <Card.Header>{this.props.players.map(player => <div>{player}</div>)}</Card.Header>
+                <Card.Header><h3 className="center">owned by {this.props.players.length} players in your party</h3><ul>{this.props.players.map(player => <li>{player}</li>)}</ul></Card.Header>
             </Card>
         )
     }
