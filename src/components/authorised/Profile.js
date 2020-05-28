@@ -1,9 +1,8 @@
 import React, { Component, Fragment} from 'react';
-import { Card, Container } from "semantic-ui-react"
+import { Container } from "semantic-ui-react"
 
 import API from "../../API"
 
-import GameCard from "../../Presentational/GameCard"
 import UserDetails from "../../Presentational/UserDetails"
 import ProfileGames from "./ProfileGames"
 
@@ -17,7 +16,7 @@ export default class Profile extends Component {
         if (parseInt(this.props.match.params.id) !== this.props.user.id) {
             API.getUserData(this.props.match.params.id, localStorage.token)
             .then(data => {
-                console.log(data.message)
+                console.log(data)
                 return this.setState({viewedProfile: data.user, games: data.games})
             })
             console.log("fetching user data")
@@ -40,7 +39,7 @@ export default class Profile extends Component {
             <Fragment>
                 <Container>
                     <UserDetails details={this.state.viewedProfile} mine={false} />
-                    <ProfileGames theirGames={this.state.games} compareMyGames={this.props.user.games} />
+                    <ProfileGames otherGames={this.state.games.other} sharedGames={this.state.games.shared} />
                 </Container>
             </Fragment> : <div>loading</div>
             

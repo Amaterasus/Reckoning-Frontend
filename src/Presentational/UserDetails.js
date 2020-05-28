@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 
 import { Item, Button, Icon, Label } from "semantic-ui-react"
+import { Link } from "react-router-dom"
 
 export default class UserDetails extends Component {
 
@@ -14,7 +15,7 @@ export default class UserDetails extends Component {
                     <Item.Header>{this.props.details.username}</Item.Header>
                     <Item.Description>{this.props.details.bio ? this.props.details.bio : "Trust me I'm interesting"}</Item.Description>
                     {this.props.mine ? <Item.Extra>
-                        <Button primary floated='right'>
+                        <Button as={Link} to={`/profile/edit`} primary floated='right'>
                         Edit Profile!
                         <Icon name='right chevron' />
                         </Button>
